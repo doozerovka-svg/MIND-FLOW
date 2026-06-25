@@ -30,6 +30,12 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Create empty secrets.dart fallback for CI
+        run: |
+          mkdir -p lib/config
+          echo "const String defaultOpenAiApiKey = '';" > lib/config/secrets.dart
+          echo "const String defaultDeepSeekApiKey = '';" >> lib/config/secrets.dart
+
       - name: Install dependencies
         run: flutter pub get
 

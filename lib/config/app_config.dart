@@ -1,3 +1,5 @@
+import 'secrets.dart';
+
 enum InputMode {
   tap,
   hold,
@@ -9,8 +11,8 @@ enum LlmProvider {
 }
 
 class AppConfig {
-  static String openAiApiKey = '';
-  static String deepSeekApiKey = '';
+  static String openAiApiKey = defaultOpenAiApiKey;
+  static String deepSeekApiKey = defaultDeepSeekApiKey;
   
   static InputMode inputMode = InputMode.tap;
   static LlmProvider llmProvider = LlmProvider.openai;

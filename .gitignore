@@ -46,3 +46,6 @@ app.*.map.json
 
 # Local downloaded tools
 /tools/
+
+# Git-ignored local secrets
+/lib/config/secrets.dart
