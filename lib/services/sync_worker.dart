@@ -1,7 +1,7 @@
 import 'package:isar/isar.dart';
 import 'package:workmanager/workmanager.dart';
 import '../data/models/task_model.dart';
-import '../repositories/task_repository.dart';
+import '../data/repositories/task_repository.dart';
 import 'llm_service.dart';
 import 'stt_service.dart';
 

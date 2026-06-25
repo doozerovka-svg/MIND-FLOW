@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/app_config.dart';
-import '../models/task_model.dart';
+import 'dart:io';
+import '../data/models/task_model.dart';
 import 'stt_service.dart'; // For OfflineException
 
 class LlmService {

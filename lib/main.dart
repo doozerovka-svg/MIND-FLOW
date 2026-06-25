@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Set system navigation overlay colors
-  SystemChrome.setSystemUIOverlayStyle(const SystemOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
     systemNavigationBarColor: Color(0xFF09090B),
@@ -172,8 +173,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: const Color(0xFF6366F1).withOpacity(0.15),
-                blurRadius: 100,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6366F1).withOpacity(0.15),
+                    blurRadius: 100,
+                    spreadRadius: 50,
+                  ),
+                ],
               ),
             ),
           ),
@@ -185,8 +191,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               height: 250,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: const Color(0xFFA5B4FC).withOpacity(0.12),
-                blurRadius: 80,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFFA5B4FC).withOpacity(0.12),
+                    blurRadius: 80,
+                    spreadRadius: 40,
+                  ),
+                ],
               ),
             ),
           ),
@@ -267,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                               padding: EdgeInsets.symmetric(horizontal: 40.0),
                               child: Text(
                                 'Свободный день.\nНажмите и удерживайте кнопку, чтобы записать задачу.',
-                                textAlign: Center,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,
@@ -294,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             padding: const EdgeInsets.all(24.0),
                             child: Text(
                               state.error,
-                              textAlign: Center,
+                              textAlign: TextAlign.center,
                               style: const TextStyle(color: Colors.redAccent),
                             ),
                           ),
@@ -842,7 +853,7 @@ class WaveformPainter extends CustomPainter {
 
     for (int i = 0; i < barCount; i++) {
       // Create organic pulsating wave bar heights
-      final double waveFactor = sin(progress * pi * 2 + (i * 0.5));
+      final double waveFactor = math.sin(progress * math.pi * 2 + (i * 0.5));
       final double barHeight = 25 + (waveFactor.abs() * 50);
       final double x = (i * spacing) + (spacing / 2);
 
